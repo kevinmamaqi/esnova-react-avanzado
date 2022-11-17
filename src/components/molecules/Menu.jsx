@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { Text } from "../atoms"
 
 const MenuStyled = styled.ul`
   display: flex;
@@ -9,7 +10,7 @@ const MenuStyled = styled.ul`
   margin: 0;
   padding: 0;
 
-  li {
+  ${Text} {
     margin-left: 0.75rem;
 
     &:first-child {
@@ -22,9 +23,9 @@ function Menu({ menu, ...props }) {
   return (
     <MenuStyled {...props}>
       {menu.map((m) => (
-        <li key={m.url}>
+        <Text as="li" key={m.url}>
           <Link to={m.url}>{m.name}</Link>
-        </li>
+        </Text>
       ))}
     </MenuStyled>
   )

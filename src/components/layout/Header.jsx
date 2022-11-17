@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { MainMenu } from "../../constants"
 import { Container } from "../../styles"
+import { Text } from "../atoms"
 import Menu from "../molecules/Menu"
 
 const HeaderStyled = styled(Container)`
@@ -11,7 +12,7 @@ const HeaderStyled = styled(Container)`
 function Header() {
   return (
     <HeaderStyled direction="row" justify="space-between">
-      MIPISO.com
+      <Text as="h1">MIPISO.com</Text>
       <Menu menu={MainMenu} />
     </HeaderStyled>
   )
