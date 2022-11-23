@@ -4,3 +4,7 @@ export const urls = {
   data: "/data",
   profile: "/profile",
 }
+
+export const apiUrls = {
+  pisos: "http://localhost:3001/pisos",
+}

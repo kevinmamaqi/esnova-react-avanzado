@@ -1,0 +1,88 @@
+{
+  "pisos": [
+    {
+      "title": "Piso 1",
+      "price": 100000,
+      "foto": "https://kevinmamaqi.com/static/casas/1.jpg",
+      "type": "garaje",
+      "city": "madrid"
+    },
+    {
+      "title": "Piso 2",
+      "price": 838000,
+      "foto": "https://kevinmamaqi.com/static/casas/2.jpg",
+      "type": "chalets",
+      "city": "barcelona"
+    },
+    {
+      "title": "Piso 3",
+      "price": 423900,
+      "foto": "https://kevinmamaqi.com/static/casas/3.jpg",
+      "type": "piso",
+      "city": "zaragoza"
+    },
+    {
+      "title": "Piso 4",
+      "price": 324900,
+      "foto": "https://kevinmamaqi.com/static/casas/4.jpg",
+      "type": "garaje",
+      "city": "zaragoza"
+    },
+    {
+      "title": "Piso 5",
+      "price": 555000,
+      "foto": "https://kevinmamaqi.com/static/casas/5.jpg",
+      "type": "garaje",
+      "city": "zaragoza"
+    },
+    {
+      "title": "Piso 6",
+      "price": 139000,
+      "foto": "https://kevinmamaqi.com/static/casas/6.jpg",
+      "type": "garaje",
+      "city": "barcelona"
+    },
+    {
+      "title": "Piso 7",
+      "price": 415000,
+      "foto": "https://kevinmamaqi.com/static/casas/7.jpg",
+      "type": "chalets",
+      "city": "barcelona"
+    },
+    {
+      "title": "Piso 8",
+      "price": 315000,
+      "foto": "https://kevinmamaqi.com/static/casas/8.jpg",
+      "type": "chalets",
+      "city": "madrid"
+    },
+    {
+      "title": "Piso 9",
+      "price": 250000,
+      "foto": "https://kevinmamaqi.com/static/casas/9.jpg",
+      "type": "chalets",
+      "city": "madrid"
+    },
+    {
+      "title": "Piso 10",
+      "price": 215000,
+      "foto": "https://kevinmamaqi.com/static/casas/10.jpg",
+      "type": "garaje",
+      "city": "barcelona"
+    },
+    {
+      "title": "Piso 11",
+      "price": 199000,
+      "foto": "https://kevinmamaqi.com/static/casas/11.jpg",
+      "type": "piso",
+      "city": "zaragoza"
+    },
+    {
+      "title": "Piso 12",
+      "price": 990000,
+      "foto": "https://kevinmamaqi.com/static/casas/12.jpg",
+      "type": "piso",
+      "city": "madrid"
+    }
+  ]
+}
