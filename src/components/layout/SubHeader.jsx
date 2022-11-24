@@ -3,11 +3,20 @@ import styled from "styled-components"
 import { apiUrls } from "../../constants"
 import { useFetch } from "../../hooks"
 import { Container, colors } from "../../styles"
+import { SelectGroup } from "../molecules"
 
 const SubHeaderStyled = styled(Container)`
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: ${colors.clearBlue};
+
+  ${SelectGroup} {
+    width: 240px;
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `
 
 function SubHeader() {
@@ -35,7 +44,12 @@ function SubHeader() {
     }
   }, [data, isSuccess])
 
-  return <SubHeaderStyled>SubHeader</SubHeaderStyled>
+  return (
+    <SubHeaderStyled align="center" justify="flex-start" direction="row">
+      <SelectGroup isHidden label="Ciudades" options={cities} />
+      <SelectGroup isHidden label="Tipo de propiedad" options={propertyTypes} />
+    </SubHeaderStyled>
+  )
 }
 
 export default SubHeader

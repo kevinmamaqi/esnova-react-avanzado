@@ -1,9 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+import { dimensions } from "../../styles"
 
 const SelectStyled = styled.select`
   width: 100%;
+  padding: 0.35rem 0.5rem;
+  border-radius: ${dimensions.borderRadius.base};
 `
 
 function Select({ options, ...props }) {
