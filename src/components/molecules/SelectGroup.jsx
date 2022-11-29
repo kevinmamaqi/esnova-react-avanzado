@@ -9,12 +9,13 @@ function SelectGroup({
   label,
   options,
   className = "",
+  defaultValue = "",
   ...props
 }) {
   return (
     <SelectGroupStyled className={className}>
       <Label isHidden={isHidden} text={label} />
-      <Select options={options} {...props} />
+      <Select options={options} {...props} defaultValue={defaultValue} />
     </SelectGroupStyled>
   )
 }
@@ -23,6 +24,7 @@ SelectGroup.propTypes = {
   isHidden: PropTypes.bool,
   label: PropTypes.string.isRequired,
   className: PropTypes.string,
+  defaultValue: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 

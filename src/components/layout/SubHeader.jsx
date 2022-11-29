@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
 import styled from "styled-components"
 import { apiUrls } from "../../constants"
 import { useFetch } from "../../hooks"
+import { setSelectedCity, setSelectedType } from "../../store/homes.slice"
 import { Container, colors } from "../../styles"
 import { SelectGroup } from "../molecules"
 
@@ -23,6 +25,7 @@ function SubHeader() {
   const [cities, setCities] = useState([])
   const [propertyTypes, setPropertyTypes] = useState([])
   const { data, initial, loading, error, isSuccess } = useFetch(apiUrls.pisos)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (isSuccess) {
@@ -46,8 +49,24 @@ function SubHeader() {
 
   return (
     <SubHeaderStyled align="center" justify="flex-start" direction="row">
-      <SelectGroup isHidden label="Ciudades" options={cities} />
-      <SelectGroup isHidden label="Tipo de propiedad" options={propertyTypes} />
+      <SelectGroup
+        isHidden
+        label="Ciudades"
+        options={cities}
+        defaultValue="Seleccionar ciudad..."
+        onChange={(e) => {
+          dispatch(setSelectedCity(e.target.value))
+        }}
+      />
+      <SelectGroup
+        isHidden
+        label="Tipo de propiedad"
+        options={propertyTypes}
+        defaultValue="Seleccionar tipo..."
+        onChange={(e) => {
+          dispatch(setSelectedType(e.target.value))
+        }}
+      />
     </SubHeaderStyled>
   )
 }

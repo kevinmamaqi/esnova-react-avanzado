@@ -9,9 +9,14 @@ const SelectStyled = styled.select`
   border-radius: ${dimensions.borderRadius.base};
 `
 
-function Select({ options, ...props }) {
+function Select({ options, defaultValue = "", ...props }) {
   return (
-    <SelectStyled {...props}>
+    <SelectStyled {...props} defaultValue={defaultValue}>
+      {!!defaultValue && (
+        <option value={defaultValue} disabled>
+          {defaultValue}
+        </option>
+      )}
       {options.map((opt) => (
         <option value={opt} key={opt}>
           {opt}
@@ -23,6 +28,7 @@ function Select({ options, ...props }) {
 
 Select.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  defaultValue: PropTypes.string,
 }
 
 export default Select
