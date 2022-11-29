@@ -1,9 +1,8 @@
-import React from "react"
-import { useSelector } from "react-redux"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
-import { apiUrls } from "../../constants"
 import { filterHouses } from "../../helpers"
-import { useFetch } from "../../hooks"
+import { getHomes } from "../../store/homes.slice"
 import Grid from "../../styles/Grid"
 import { Card, Text } from "../atoms"
 
@@ -16,16 +15,26 @@ const HomesStyled = styled(Grid)`
 `
 
 function Homes({ ...props }) {
-  const { data, initial, loading, error, isSuccess } = useFetch(apiUrls.pisos)
+  const { initial, isLoading, isError, isSuccess } = useSelector(
+    (state) => state.homes.status,
+  )
+
+  const homes = useSelector((state) => state.homes.homes)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getHomes())
+  }, [dispatch])
+
   const { selectedCity, selectedType } = useSelector((state) => state.homes)
 
   return (
     <HomesStyled {...props}>
       {initial && <p>Initial</p>}
-      {loading && <p>Loading</p>}
-      {error && <p>Error</p>}
+      {isLoading && <p>Loading</p>}
+      {isError && <p>Error</p>}
       {isSuccess &&
-        data
+        homes
           .filter((house) => filterHouses(house, selectedCity, selectedType))
           .map((home) => (
             <Card key={home.id}>
