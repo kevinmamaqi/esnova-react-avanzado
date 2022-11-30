@@ -19,10 +19,13 @@ function Homes({ ...props }) {
     (state) => state.homes.status,
   )
 
-  const homes = useSelector((state) => state.homes.homes)
+  const { byIds, allIds } = useSelector((state) => state.homes.homes)
 
+  console.log("byIds", byIds)
+  console.log("allIds", allIds)
   const dispatch = useDispatch()
   useEffect(() => {
+    console.log("homes")
     dispatch(getHomes())
   }, [dispatch])
 
@@ -34,7 +37,8 @@ function Homes({ ...props }) {
       {isLoading && <p>Loading</p>}
       {isError && <p>Error</p>}
       {isSuccess &&
-        homes
+        allIds
+          .map((id) => byIds[id])
           .filter((house) => filterHouses(house, selectedCity, selectedType))
           .map((home) => (
             <Card key={home.id}>

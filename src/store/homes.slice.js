@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { apiUrls } from "../constants"
+import { getCities, getHouseTypes } from "../helpers"
 
 export const getHomes = createAsyncThunk("homes/getHomes", async () => {
   try {
@@ -12,7 +13,16 @@ export const getHomes = createAsyncThunk("homes/getHomes", async () => {
 })
 
 const initialState = {
-  homes: [],
+  homes: {
+    byIds: {},
+    allIds: [],
+    byCities: { madrid: [3, 4, 5], barcelona: [1, 2] },
+    byTypes: { piso: [1, 2, 3], chalet: [4, 5] },
+    byDateAdded: { 2020: [1, 2, 3], 2019: [4, 5] },
+    byNumberOfRooms: { 1: [1, 2, 3], 2: [4, 5] },
+  },
+  cities: [],
+  types: [],
   selectedCity: null,
   selectedType: null,
   status: {
@@ -33,6 +43,11 @@ export const homesSlice = createSlice({
     setSelectedType: (state, action) => {
       state.selectedType = action.payload
     },
+    setDeleteById: (state, action) => {
+      const { id } = action.payload
+      delete state.homes.byIds[id]
+      state.homes.allIds = state.homes.allIds.filter((item) => item !== id)
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -45,7 +60,13 @@ export const homesSlice = createSlice({
         }
       })
       .addCase(getHomes.fulfilled, (state, action) => {
-        state.homes = action.payload
+        action.payload.forEach((home) => {
+          state.homes.byIds[home.id] = home
+        })
+        state.homes.allIds = Object.keys(state.homes.byIds)
+
+        state.cities = getCities(action.payload)
+        state.types = getHouseTypes(action.payload)
         state.status = {
           initial: false,
           isLoading: false,

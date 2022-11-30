@@ -1,6 +1,7 @@
 {
   "pisos": [
     {
+      "id": 1,
       "title": "Piso 1",
       "price": 100000,
       "foto": "https://kevinmamaqi.com/static/casas/1.jpg",
@@ -8,6 +9,7 @@
       "city": "madrid"
     },
     {
+      "id": 2,
       "title": "Piso 2",
       "price": 838000,
       "foto": "https://kevinmamaqi.com/static/casas/2.jpg",
@@ -15,6 +17,7 @@
       "city": "barcelona"
     },
     {
+      "id": 3,
       "title": "Piso 3",
       "price": 423900,
       "foto": "https://kevinmamaqi.com/static/casas/3.jpg",
@@ -22,6 +25,7 @@
       "city": "zaragoza"
     },
     {
+      "id": 4,
       "title": "Piso 4",
       "price": 324900,
       "foto": "https://kevinmamaqi.com/static/casas/4.jpg",
@@ -29,6 +33,7 @@
       "city": "zaragoza"
     },
     {
+      "id": 5,
       "title": "Piso 5",
       "price": 555000,
       "foto": "https://kevinmamaqi.com/static/casas/5.jpg",
@@ -36,6 +41,7 @@
       "city": "zaragoza"
     },
     {
+      "id": 6,
       "title": "Piso 6",
       "price": 139000,
       "foto": "https://kevinmamaqi.com/static/casas/6.jpg",
@@ -43,6 +49,7 @@
       "city": "barcelona"
     },
     {
+      "id": 7,
       "title": "Piso 7",
       "price": 415000,
       "foto": "https://kevinmamaqi.com/static/casas/7.jpg",
@@ -50,6 +57,7 @@
       "city": "barcelona"
     },
     {
+      "id": 8,
       "title": "Piso 8",
       "price": 315000,
       "foto": "https://kevinmamaqi.com/static/casas/8.jpg",
@@ -57,6 +65,7 @@
       "city": "madrid"
     },
     {
+      "id": 9,
       "title": "Piso 9",
       "price": 250000,
       "foto": "https://kevinmamaqi.com/static/casas/9.jpg",
@@ -64,6 +73,7 @@
       "city": "madrid"
     },
     {
+      "id": 10,
       "title": "Piso 10",
       "price": 215000,
       "foto": "https://kevinmamaqi.com/static/casas/10.jpg",
@@ -71,6 +81,7 @@
       "city": "barcelona"
     },
     {
+      "id": 11,
       "title": "Piso 11",
       "price": 199000,
       "foto": "https://kevinmamaqi.com/static/casas/11.jpg",
@@ -78,6 +89,7 @@
       "city": "zaragoza"
     },
     {
+      "id": 12,
       "title": "Piso 12",
       "price": 990000,
       "foto": "https://kevinmamaqi.com/static/casas/12.jpg",

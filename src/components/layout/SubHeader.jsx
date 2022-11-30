@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
-import { apiUrls } from "../../constants"
-import { useFetch } from "../../hooks"
-import { setSelectedCity, setSelectedType } from "../../store/homes.slice"
+import {
+  getHomes,
+  setSelectedCity,
+  setSelectedType,
+} from "../../store/homes.slice"
 import { Container, colors } from "../../styles"
 import { SelectGroup } from "../molecules"
 
@@ -22,30 +24,13 @@ const SubHeaderStyled = styled(Container)`
 `
 
 function SubHeader() {
-  const [cities, setCities] = useState([])
-  const [propertyTypes, setPropertyTypes] = useState([])
-  const { data, initial, loading, error, isSuccess } = useFetch(apiUrls.pisos)
   const dispatch = useDispatch()
+  const { cities, types } = useSelector((state) => state.homes)
 
   useEffect(() => {
-    if (isSuccess) {
-      const uniqCities = data.reduce((acc, home) => {
-        if (!acc.includes(home.city)) {
-          acc.push(home.city)
-        }
-        return acc
-      }, [])
-      setCities(uniqCities)
-
-      const uniqPropertyType = data.reduce((acc, home) => {
-        if (!acc.includes(home.type)) {
-          acc.push(home.type)
-        }
-        return acc
-      }, [])
-      setPropertyTypes(uniqPropertyType)
-    }
-  }, [data, isSuccess])
+    console.log("subheader")
+    dispatch(getHomes())
+  }, [dispatch])
 
   return (
     <SubHeaderStyled align="center" justify="flex-start" direction="row">
@@ -61,7 +46,7 @@ function SubHeader() {
       <SelectGroup
         isHidden
         label="Tipo de propiedad"
-        options={propertyTypes}
+        options={types}
         defaultValue="Seleccionar tipo..."
         onChange={(e) => {
           dispatch(setSelectedType(e.target.value))
