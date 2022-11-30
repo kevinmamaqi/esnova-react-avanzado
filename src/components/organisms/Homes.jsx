@@ -1,8 +1,7 @@
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useQuery } from "@tanstack/react-query"
+import React from "react"
 import styled from "styled-components"
 import { filterHouses } from "../../helpers"
-import { getHomes } from "../../store/homes.slice"
 import Grid from "../../styles/Grid"
 import { Card, Text } from "../atoms"
 
@@ -15,36 +14,29 @@ const HomesStyled = styled(Grid)`
 `
 
 function Homes({ ...props }) {
-  const { initial, isLoading, isError, isSuccess } = useSelector(
-    (state) => state.homes.status,
-  )
-
-  const { byIds, allIds } = useSelector((state) => state.homes.homes)
-
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getHomes())
-  }, [dispatch])
-
-  const { selectedCity, selectedType } = useSelector((state) => state.homes)
+  const { data, isInitialLoading, isError, isLoading } = useQuery({
+    queryKey: ["homes"],
+  })
+  const { data: selectedCity } = useQuery({
+    queryKey: ["clientSelectedCity"],
+  })
+  const { data: selectedType } = useQuery({ queryKey: ["clientSelectedType"] })
 
   return (
     <HomesStyled {...props}>
-      {initial && <p>Initial</p>}
+      {isInitialLoading && <p>Initial</p>}
       {isLoading && <p>Loading</p>}
       {isError && <p>Error</p>}
-      {isSuccess &&
-        allIds
-          .map((id) => byIds[id])
-          .filter((house) => filterHouses(house, selectedCity, selectedType))
-          .map((home) => (
-            <Card key={home.id}>
-              <h2>{home.title}</h2>
-              <Text>{home.price}</Text>
-              <Text>Ciudad: {home.city}</Text>
-              <Text>Tipo: {home.type}</Text>
-            </Card>
-          ))}
+      {(data || [])
+        .filter((house) => filterHouses(house, selectedCity, selectedType))
+        .map((home) => (
+          <Card key={home.id}>
+            <h2>{home.title}</h2>
+            <Text>{home.price}</Text>
+            <Text>Ciudad: {home.city}</Text>
+            <Text>Tipo: {home.type}</Text>
+          </Card>
+        ))}
     </HomesStyled>
   )
 }
