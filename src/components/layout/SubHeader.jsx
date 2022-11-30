@@ -1,6 +1,9 @@
-import React, { useEffect } from "react"
+import { useQuery } from "@tanstack/react-query"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import styled from "styled-components"
+import { apiUrls } from "../../constants"
+import { getCities } from "../../helpers"
 import {
   getHomes,
   setSelectedCity,
@@ -24,17 +27,28 @@ const SubHeaderStyled = styled(Container)`
 `
 
 function SubHeader() {
-  const dispatch = useDispatch()
-  const { cities, types } = useSelector((state) => state.homes)
-
-  useEffect(() => {
-    console.log("subheader")
-    dispatch(getHomes())
-  }, [dispatch])
+  const [cities, setCities] = useState([])
+  const { isSuccess, status, isLoading } = useQuery({
+    queryKey: ["homes"],
+    queryFn: () => fetch(apiUrls.pisos).then((res) => res.json()),
+    onSuccess: (data) => {
+      const c = getCities(data)
+      setCities(c)
+    },
+  })
 
   return (
     <SubHeaderStyled align="center" justify="flex-start" direction="row">
       <SelectGroup
+        isHidden
+        label="Ciudades"
+        options={cities}
+        defaultValue="Seleccionar ciudad..."
+        // onChange={(e) => {
+        //   dispatch(setSelectedCity(e.target.value))
+        // }}
+      />
+      {/* <SelectGroup
         isHidden
         label="Ciudades"
         options={cities}
@@ -51,7 +65,7 @@ function SubHeader() {
         onChange={(e) => {
           dispatch(setSelectedType(e.target.value))
         }}
-      />
+      /> */}
     </SubHeaderStyled>
   )
 }

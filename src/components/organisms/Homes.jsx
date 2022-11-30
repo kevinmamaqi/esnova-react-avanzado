@@ -21,11 +21,8 @@ function Homes({ ...props }) {
 
   const { byIds, allIds } = useSelector((state) => state.homes.homes)
 
-  console.log("byIds", byIds)
-  console.log("allIds", allIds)
   const dispatch = useDispatch()
   useEffect(() => {
-    console.log("homes")
     dispatch(getHomes())
   }, [dispatch])
 
