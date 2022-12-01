@@ -3,7 +3,14 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["eslint:recommended", "airbnb", "airbnb/hooks", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
@@ -12,6 +19,12 @@
     "no-param-reassign": [
       "error",
       { "props": true, "ignorePropertyModificationsFor": ["state"] }
+    ],
+    "dot-notation": [
+      "warn",
+      {
+        "allowKeywords": true
+      }
     ]
   }
 }

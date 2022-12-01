@@ -12,7 +12,7 @@ import {
 import { Container, colors } from "../../styles"
 import { SelectGroup } from "../molecules"
 
-const SubHeaderStyled = styled(Container)`
+export const SubHeaderStyled = styled(Container)`
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: ${colors.clearBlue};
