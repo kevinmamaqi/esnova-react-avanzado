@@ -29,6 +29,7 @@ function EsnovaTable({ columns, data }) {
           <tr key={home.id}>
             <TableCell>{home.title}</TableCell>
             <TableCell>{home.price}</TableCell>
+            <TableCell>{home.price}</TableCell>
           </tr>
         ))}
       </tbody>
