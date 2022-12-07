@@ -5,6 +5,16 @@ import EsnovaTable from "../components/organisms/EsnovaTable"
 import { apiUrls } from "../constants"
 import { Container } from "../styles"
 
+const setPriceColor = (price) => {
+  if (price < 250000) return "green"
+  if (price > 600000) return "red"
+  return "black"
+}
+
+function Precio({ price }) {
+  return <span style={{ color: setPriceColor(price) }}>{price} €</span>
+}
+
 function Data() {
   const { data } = useQuery({
     queryKey: ["homes"],
@@ -12,10 +22,15 @@ function Data() {
   })
   const columns = [
     { id: "title", label: "Nombre" },
-    { id: "price", label: "Precio" },
+    {
+      id: "price",
+      label: "Precio",
+      Cell: Precio,
+    },
     {
       id: "city",
       label: "Ciudad",
+      isHidden: true,
     },
     {
       id: "type",
