@@ -19,17 +19,19 @@ function EsnovaTable({ columns, data }) {
         <tr>
           {columns.map((column) => (
             <TableCell as="th" key={column}>
-              {column}
+              {column.label}
             </TableCell>
           ))}
         </tr>
       </thead>
       <tbody>
-        {data?.map((home) => (
-          <tr key={home.id}>
-            <TableCell>{home.title}</TableCell>
-            <TableCell>{home.price}</TableCell>
-            <TableCell>{home.price}</TableCell>
+        {data?.map((row) => (
+          <tr key={row.id}>
+            {columns.map((col) => (
+              <TableCell key={col.id}>
+                {col.Cell ? col.Cell(row) : row[col.id]}
+              </TableCell>
+            ))}
           </tr>
         ))}
       </tbody>
