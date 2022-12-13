@@ -7,7 +7,6 @@ import TableHeader from "./TableHeader"
 
 function Table({ columns, data, showHeader = true }) {
   const { state, dispatch } = useContext(TableContext)
-
   useEffect(() => {
     dispatch({ type: "SET_COLUMNS", payload: columns })
     dispatch({ type: "SET_DATA", payload: data })
@@ -15,11 +14,13 @@ function Table({ columns, data, showHeader = true }) {
   }, [columns, data, showHeader, dispatch])
 
   return (
-    <TableStyled>
-      {state.showHeader && <TableHeader />}
-      <TableBody />
+    <>
+      <TableStyled>
+        {state.showHeader && <TableHeader />}
+        <TableBody />
+      </TableStyled>
       <TableFooter />
-    </TableStyled>
+    </>
   )
 }
 

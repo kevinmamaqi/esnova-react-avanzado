@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { SortIcon } from "./icons"
 import { TableContext } from "./store/context"
 import { TableCell } from "./styles"
 
@@ -11,8 +12,9 @@ function TableHeader() {
         {columns
           .filter((col) => !col?.isHidden)
           .map((column) => (
-            <TableCell as="th" key={column}>
+            <TableCell as="th" key={column.id} isSorted={column.showSortBy}>
               {column.label}
+              {column.showSortBy && <SortIcon colId={column.id} />}
             </TableCell>
           ))}
       </tr>

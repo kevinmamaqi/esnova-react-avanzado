@@ -20,8 +20,9 @@ function Data() {
     queryKey: ["homes"],
     queryFn: () => fetch(apiUrls.pisos).then((res) => res.json()),
   })
+
   const columns = [
-    { id: "title", label: "Nombre" },
+    { id: "title", label: "Nombre", showSortBy: true },
     {
       id: "price",
       label: "Precio",
@@ -35,6 +36,7 @@ function Data() {
     {
       id: "type",
       label: "Tipo",
+      showSortBy: true,
     },
   ]
 
