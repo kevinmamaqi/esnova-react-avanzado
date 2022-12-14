@@ -4,10 +4,13 @@ import { TableCell } from "./styles"
 
 function TableBody() {
   const { state } = useContext(TableContext)
-  const { columns, data, rowsPerPage } = state
+  const { columns, data, rowsPerPage, currentPage } = state
+
+  const initialCut = (currentPage - 1) * rowsPerPage
+  const finalCut = initialCut + rowsPerPage
   return (
     <tbody>
-      {data?.slice(0, rowsPerPage).map((row) => (
+      {data?.slice(initialCut, finalCut).map((row) => (
         <tr key={row.id}>
           {columns
             .filter((col) => !col?.isHidden)

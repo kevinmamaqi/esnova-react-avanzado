@@ -5,6 +5,7 @@ export const initialState = {
   data: [],
   showHeader: true,
   rowsPerPage: 10,
+  currentPage: 1,
 }
 
 const extraProps = {
@@ -24,6 +25,7 @@ export const Actions = {
   SET_DATA: "SET_DATA",
   SET_SHOW_HEADER: "SET_SHOW_HEADER",
   SET_ROWS_PER_PAGE: "SET_ROWS_PER_PAGE",
+  SET_PAGINATION: "SET_PAGINATION",
   SORT_ROWS: "SORT_ROWS",
 }
 
@@ -45,6 +47,12 @@ export const tableReducer = (state, action) => {
     case Actions.SET_ROWS_PER_PAGE:
       return produce(state, (draft) => {
         draft.rowsPerPage = action.payload
+      })
+
+    case Actions.SET_PAGINATION:
+      return produce(state, (draft) => {
+        console.log("action.payload", action.payload)
+        draft.currentPage = action.payload
       })
 
     case Actions.SORT_ROWS:
