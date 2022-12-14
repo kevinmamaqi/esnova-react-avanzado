@@ -15,6 +15,8 @@ function Precio({ price }) {
   return <span style={{ color: setPriceColor(price) }}>{price} €</span>
 }
 
+// Columnas: Nombre del distrito y número de pisos
+
 function Data() {
   const { data } = useQuery({
     queryKey: ["homes"],
