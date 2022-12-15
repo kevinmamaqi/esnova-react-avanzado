@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "vitest-globals/env": true
   },
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -10,7 +11,12 @@
       "jsx": true
     }
   },
-  "extends": ["airbnb", "airbnb/hooks", "prettier"],
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:vitest-globals/recommended",
+    "prettier"
+  ],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
