@@ -12,4 +12,8 @@ export default defineConfig({
     setupFiles: "./src/__tests__/setup.js",
     include: ["**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
   },
+  build: {
+    minify: "terser",
+    cssCodeSplit: true,
+  },
 })
