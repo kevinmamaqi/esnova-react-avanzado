@@ -11,4 +11,9 @@ describe("Data", () => {
     render(<Data />)
     expect(await screen.findByText(/Piso 1/)).toBeInTheDocument()
   })
+
+  it("should match snapshot", () => {
+    const { container } = render(<Data />)
+    expect(container).toMatchSnapshot()
+  })
 })
