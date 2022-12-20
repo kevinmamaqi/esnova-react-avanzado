@@ -11,7 +11,11 @@ const SelectStyled = styled.select`
 
 function Select({ options, defaultValue = "", ...props }) {
   return (
-    <SelectStyled {...props} defaultValue={defaultValue}>
+    <SelectStyled
+      {...props}
+      defaultValue={defaultValue}
+      data-testid="selectAtomUI"
+    >
       {!!defaultValue && (
         <option value={defaultValue} disabled>
           {defaultValue}
